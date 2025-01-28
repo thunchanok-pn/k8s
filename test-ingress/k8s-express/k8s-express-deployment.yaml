@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-app
+##  namespace: express
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: express-app
+  template:
+    metadata:
+      labels:
+        app: express-app
+    spec:
+      containers:
+      - name: express-app3
+        image: pongsapakk/express-app:latest
+        ports:
+        - containerPort: 8880
+        env:
+        - name: DB_USER
+          value: "thunchra"
+        - name: DB_PASSWORD
+          value: "P@ssw0rd"
+        - name: DB_HOST
+          value: "external-db-service.default.svc.cluster.local"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_NAME
+          value: "pn"

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: external-db-service
+  namespace: default
+subsets:
+  - addresses:
+      - ip: 192.168.2.84  # Private IP address
+    ports:
+      - port: 5432

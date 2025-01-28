@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-piano
+  #namespace: test2
+data:
+  index.html: |
+    <HTML>
+    <HEAD><TITLE>Piano K8s nginx Machine</TITLE></HEAD>
+    <BODY>
+    <H1>Welcome to Piano machine</H1>
+    </BODY></HTML>

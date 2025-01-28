@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oatwebserv
+  #namespace: test2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: oatweb-app
+  template:
+    metadata:
+      name: oatmyhello
+      labels:
+        app: oatweb-app
+    spec:
+      containers:
+        - name: oatmyhello
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: oat-config
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: oat-config
+          configMap:
+            name: nginx-oat
